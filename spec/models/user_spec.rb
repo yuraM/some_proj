@@ -8,7 +8,10 @@ describe User do
   end
 
   subject { @user }
-
+ describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
